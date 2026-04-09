@@ -1,0 +1,86 @@
+<!-- NEW EMOTIONS PAGE -->
+<div class="pg" id="pg-emotions-new">
+  <div class="hdr"><button class="bk" onclick="go('pg-home');resetEmotions()" style="margin-right:10px">←</button><h1>BABY EMOTIONS</h1><div style="width:34px"></div></div>
+  <div class="scr"><div class="ct">
+    
+    <!-- STEP 1: PICK EMOTION -->
+    <div id="emo-step-pick" style="display:block">
+      <div class="card" style="text-align:center">
+        <div style="font-size:14px;font-weight:900;color:#1e40af;margin-bottom:2px">How is your baby feeling?</div>
+        <div style="font-size:11px;color:#6b7280;margin-bottom:15px">Tap the expression that best describes baby right now</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <button class="emo-btn" onclick="startEmoQuestions('Happy')" style="background: linear-gradient(135deg, hsl(145 55% 92%), hsl(145 50% 82%));border:2.5px solid #86efac">
+            <div style="font-size:48px;margin-bottom:8px">😊</div>
+            <div style="font-size:15px;font-weight:900;color:#15803d">Happy</div>
+          </button>
+          <button class="emo-btn" onclick="startEmoQuestions('Sad')" style="background: linear-gradient(135deg, hsl(210 80% 93%), hsl(210 70% 87%));border:2.5px solid #93c5fd">
+            <div style="font-size:48px;margin-bottom:8px">😢</div>
+            <div style="font-size:15px;font-weight:900;color:#1e40af">Sad</div>
+          </button>
+          <button class="emo-btn" onclick="startEmoQuestions('Suffocated')" style="background: linear-gradient(135deg, hsl(45 95% 90%), hsl(45 85% 80%));border:2.5px solid #f59e0b">
+            <div style="font-size:48px;margin-bottom:8px">😫</div>
+            <div style="font-size:15px;font-weight:900;color:#92400e">Suffocated</div>
+          </button>
+          <button class="emo-btn" onclick="startEmoQuestions('Cry')" style="background: linear-gradient(135deg, hsl(0 80% 93%), hsl(0 70% 85%));border:2.5px solid #fca5a5">
+            <div style="font-size:48px;margin-bottom:8px">😭</div>
+            <div style="font-size:15px;font-weight:900;color:#b91c1c">Cry</div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: AI QUESTIONS -->
+    <div id="emo-step-questions" style="display:none">
+      <div class="card" style="text-align:center">
+        <div style="font-size:44px;margin-bottom:8px" id="emo-ico">😊</div>
+        <div style="font-size:16px;font-weight:900;color:#db2777;margin-bottom:8px" id="emo-emotion-label">Happy Baby</div>
+        <div style="font-size:11px;color:#6b7280">AI is asking you some questions to understand baby better</div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;background:linear-gradient(135deg, hsl(270 60% 70%), hsl(330 81% 60%))">🤖</div>
+          <div style="font-size:14px;font-weight:900;color:#5b21b6">AI Assistant</div>
+          <div style="margin-left:auto;font-size:10px;color:#6b7280;font-weight:800" id="emo-q-counter">Q1/4</div>
+        </div>
+        
+        <div style="font-size:13px;font-weight:900;color:#1f2937;line-height:1.5;background:hsl(270 50% 98%);border-left:4px solid hsl(270 60% 70%);border-radius:8px;padding:12px;margin-bottom:12px" id="emo-question-text">Question here</div>
+        
+        <div style="display:flex;flex-direction:column;gap:8px" id="emo-options-container"></div>
+      </div>
+
+      <button class="btn-main" onclick="backEmoQuestions()" style="width:100%;margin-top:6px;background:#f0f0f0;color:#6b7280;font-weight:900">← Back to Emotions</button>
+    </div>
+
+    <!-- STEP 3: RESULTS -->
+    <div id="emo-step-result" style="display:none">
+      <div class="card" style="text-align:center">
+        <div style="font-size:52px;margin-bottom:12px;line-height:1" id="emo-result-ico">😊</div>
+        <div style="font-size:16px;font-weight:900;margin-bottom:12px" id="emo-result-title" style="color:#15803d">Happy Baby — Here Is What To Do</div>
+        
+        <div style="font-style:italic;font-size:13px;color:#6b7280;background:hsl(270 50% 98%);border-left:4px solid hsl(270 60% 70%);border-radius:8px;padding:12px;margin-bottom:12px" id="emo-result-quote">"A happy baby is a growing baby"</div>
+        
+        <div style="background:hsl(25 100% 97%);border-left:4px solid hsl(25 90% 60%);border-radius:8px;padding:12px;text-align:left">
+          <div style="font-size:11px;font-weight:900;color:#ea580c;margin-bottom:8px;text-transform:uppercase">✅ Recommended Activities</div>
+          <div id="emo-result-activities" style="font-size:12px;color:#1f2937;line-height:1.8"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:11px;font-weight:900;color:#9ca3af;background:hsl(220 10% 95%);border-radius:8px;padding:10px;text-align:center" id="emo-result-insight">Insight goes here</div>
+      </div>
+
+      <button class="btn-main" onclick="resetEmotions()" style="width:100%;margin-top:6px">🔄 Check Another Emotion</button>
+    </div>
+
+  </div></div>
+</div>
+
+<style>
+.emo-btn {
+  border-radius:18px;padding:16px 12px;display:flex;flex-direction:column;align-items:center;background:#fff;cursor:pointer;font-family:inherit;transition:all 0.2s;
+}
+.emo-btn:active {
+  transform:scale(0.93);
+}
+</style>
